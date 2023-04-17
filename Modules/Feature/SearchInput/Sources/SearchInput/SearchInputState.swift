@@ -8,11 +8,7 @@
 import Foundation
 import Architecture
 
-public protocol SearchInputStateProtocol: State {
-
-}
-
-public struct SearchInputState: SearchInputStateProtocol {
+internal struct SearchInputState: State {
 
     public init() {
         

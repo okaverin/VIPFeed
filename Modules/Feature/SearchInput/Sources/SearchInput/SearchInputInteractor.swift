@@ -8,10 +8,13 @@
 import Foundation
 import Architecture
 
-internal typealias SearchInputInteractorProtocol = Interactor
+@MainActor
+internal protocol SearchInputInteractorProtocol: Interactor {
+    var presenter: any SearchInputPresenterProtocol { get }
+}
 
 @MainActor
-internal final class SearchInputInteractor: SearchInputInteractorProtocol {
+internal final class SearchInputInteractor: SearchInputInteractorProtocol  {
     var presenter: any SearchInputPresenterProtocol
 
     init(presenter: any SearchInputPresenterProtocol) {

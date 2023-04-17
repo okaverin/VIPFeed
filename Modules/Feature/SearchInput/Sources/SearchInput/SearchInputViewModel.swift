@@ -8,7 +8,10 @@
 import Foundation
 import Architecture
 
-internal typealias SearchInputViewModelProtocol = Architecture.ViewModel
+@MainActor
+internal protocol SearchInputViewModelProtocol: Architecture.ViewModel {
+    var interactor: (any SearchInputInteractorProtocol)? { get set }
+}
 
 @MainActor
 internal final class SearchInputViewModel: SearchInputViewModelProtocol {

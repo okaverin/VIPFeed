@@ -17,18 +17,24 @@ public protocol View<ViewModelType>: SwiftUI.View {
 
 @MainActor
 public protocol Interactor: AnyObject {
-    var presenter: any Presenter { get }
+    associatedtype PresenterType
+
+    var presenter: PresenterType { get }
 }
 
 @MainActor
 public protocol Presenter: AnyObject {
-    var viewModel: any ViewModel { get set }
+    associatedtype ViewModelType
+
+    var viewModel: ViewModelType { get set }
 }
 
 @MainActor
 public protocol ViewModel: ObservableObject {
+    associatedtype InteractorType
+
     /// This shoud be a weak reference
-    var interactor: (any Interactor)? { get set }
+    var interactor: InteractorType? { get set }
 }
 
 @MainActor
@@ -38,8 +44,6 @@ public protocol Assembly {
     func view(with state: any State, actions: any Actions) -> ViewType
 }
 
-@MainActor
-public protocol State: Equatable { }
+public protocol State: Equatable, Sendable { }
 
-@MainActor
-public protocol Actions { }
+public protocol Actions: Sendable { }
