@@ -8,14 +8,6 @@
 import Foundation
 import Architecture
 
-internal protocol SearchInputActionsProtocol: Actions {
-    func performSearch(term: String) async throws
-}
-
-internal struct SearchInputActions: SearchInputActionsProtocol {
-    public init() {}
-
-    public func performSearch(term: String) async throws {
-
-    }
+public struct SearchInputActions: Actions {
+    let performSearch: @Sendable (_ term: String) -> [String]
 }

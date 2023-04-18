@@ -1,17 +1,16 @@
 //
-//  SearchInputState.swift
+//  File.swift
 //  
 //
-//  Created by Oleksandr Kaverin on 14/04/2023.
+//  Created by Oleksandr Kaverin on 18/04/2023.
 //
 
 import Foundation
-import Architecture
 
-internal struct SearchInputState: State {
+public struct SearchInputState: Equatable, Sendable {
+    public internal(set) var isLoading: Bool = false
+    public internal(set) var searchTerm: String = ""
+    public internal(set) var searchResults: [String]? = nil
 
-    public init() {
-        
-    }
-
+    public init() { }
 }
