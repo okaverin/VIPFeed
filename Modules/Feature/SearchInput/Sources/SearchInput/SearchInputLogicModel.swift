@@ -12,18 +12,25 @@ public struct SearchInputLogicModel {
 
     public init() {}
 
-    enum PerformSearch {
+    enum Search {
         struct Request {
             let searchTerm: String
         }
 
         struct Response {
-            var searchResults: [String]
-        }
-
-        struct ViewModel {
-            var searchResults: [String]
+            let searchResults: [String]
         }
     }
 
+    enum SearchProgress {
+        struct Response {
+            let progressMessage: String
+        }
+    }
+
+    enum SearchError {
+        struct Response {
+            let errorDescription: String
+        }
+    }
 }

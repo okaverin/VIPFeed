@@ -15,8 +15,7 @@ public protocol View<ViewModelType>: SwiftUI.View {
     var viewModel: ViewModelType { get set }
 }
 
-@MainActor
-public protocol Interactor: AnyObject {
+public protocol Interactor: AnyActor {
     associatedtype PresenterType
 
     var presenter: PresenterType { get }
@@ -41,7 +40,7 @@ public protocol ViewModel: ObservableObject {
 public protocol Assembly {
     associatedtype ViewType: View
 
-    func view(with state: any State, actions: any Actions) -> ViewType
+    func view(with state: any State) -> ViewType
 }
 
 public protocol State: Equatable, Sendable { }

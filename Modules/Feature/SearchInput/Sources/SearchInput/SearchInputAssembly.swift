@@ -17,11 +17,15 @@ public struct SearchInputAssembly: Assembly {
     public init() {
         viewModel = SearchInputViewModel()
         presenter = SearchInputPresenter(viewModel: viewModel)
-        interactor = SearchInputInteractor(presenter: presenter)
+        let searchInputWorker = SearchInputWorker()
+        interactor = SearchInputInteractor(
+            presenter: presenter,
+            searchInputWorker: searchInputWorker
+        )
         viewModel.interactor = interactor
     }
 
-    public func view(with state: any State, actions: any Actions) -> some SearchInputViewProtocol {
+    public func view(with state: any State) -> some SearchInputViewProtocol {
         let view = SearchInputView(viewModel: viewModel)
         return view
     }

@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import Architecture
 
-public struct SearchInputState: Equatable, Sendable {
+public struct SearchInputState: State {
     public internal(set) var isLoading: Bool = false
     public internal(set) var searchTerm: String = ""
-    public internal(set) var searchResults: [String]? = nil
+    public internal(set) var searchResults: [String] = []
 
     public init() { }
 }
